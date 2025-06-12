@@ -22,7 +22,7 @@ FROM contratoServicio cs
 JOIN cliente c ON cs.cicliente = c.ci;
 """
 conn = psycopg2.connect(
-    host="localhost",
+    host="db",
     port="5432",
     database="bi_juridico",
     user="lid",
@@ -195,5 +195,6 @@ def actualizar_vista(menu, fechaInicio, fechaFin): #, valuebtn
     return titulo, fig, estado, montototal
 
 
-if __name__ == '__main__':
-    app.run()
+# if __name__ == '__main__':
+#     # app.run()
+app.run(debug=True, host='0.0.0.0', port=8050)

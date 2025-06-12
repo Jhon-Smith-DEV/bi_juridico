@@ -1,0 +1,36 @@
+version: '3.9'
+
+services:
+  dash_app:
+    build: .
+    container_name: dash_app
+    ports:
+      - "8050:8050"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=bi_juridico
+      - DB_USER=lid
+      - DB_PASSWORD=12345678
+    restart: unless-stopped
+
+  db:
+    image: postgres:16
+    container_name: dash_postgres
+    environment:
+      POSTGRES_DB: bi_juridico
+      POSTGRES_USER: lid
+      POSTGRES_PASSWORD: 12345678
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init-db:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+volumes:
+  pgdata:

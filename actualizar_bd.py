@@ -106,7 +106,7 @@ print(df_servicios.head(2))
 try:
     # Conexión
     conn = psycopg2.connect(
-        host="localhost",
+        host="db",
         port="5432",
         database="bi_juridico",
         user="lid",
