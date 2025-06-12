@@ -1,0 +1,5 @@
+dash~=3.0.4
+pandas~=2.2.3
+plotly~=6.1.2
+psycopg2~=2.9.10
+requests~=2.32.3
